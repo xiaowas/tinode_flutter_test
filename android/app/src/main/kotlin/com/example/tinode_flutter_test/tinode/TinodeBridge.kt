@@ -7,7 +7,7 @@ class TinodeBridge {
 
     companion object {
         private const val APP_NAME = "tinode_flutter_test"
-        private const val API_KEY = ""
+        private const val API_KEY = "AQEAAAABAAD_rAp4DJh05a1HAwFT3A6K"
 
         // 你的 Tinode Server
         private const val HOST = "119.29.246.172:6060"

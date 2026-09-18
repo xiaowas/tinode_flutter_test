@@ -30,6 +30,16 @@ class MainActivity : FlutterActivity() {
                     tinodeBridge.connect(result)
                 }
 
+                "login" -> {
+                    val username = call.argument<String>("username")
+                    val password = call.argument<String>("password")
+                    if (username.isNullOrBlank() || password.isNullOrEmpty()) {
+                        result.error("INVALID_ARGUMENT", "Username and password are required", null)
+                    } else {
+                        tinodeBridge.login(username, password, result)
+                    }
+                }
+
                 else -> {
                     result.notImplemented()
                 }

@@ -1,7 +1,11 @@
 package com.example.tinode_flutter_test.tinode
 
 import co.tinode.tinodesdk.Tinode
+import co.tinode.tinodesdk.PromisedReply
+import co.tinode.tinodesdk.model.ServerMessage
 import io.flutter.plugin.common.MethodChannel
+
+private typealias TinodeMessage = ServerMessage<Any, Any, Any, Any>
 
 class TinodeBridge {
 
@@ -65,6 +69,56 @@ class TinodeBridge {
                 e.message ?: "Tinode connect failed",
                 null
             )
+        }
+    }
+
+    fun login(username: String, password: String, result: MethodChannel.Result) {
+        try {
+            val client = tinode ?: Tinode(APP_NAME, API_KEY, object : Tinode.EventListener {})
+                .also { tinode = it }
+
+            val onLogin = object : PromisedReply.SuccessListener<TinodeMessage>() {
+                override fun onSuccess(message: TinodeMessage?): PromisedReply<TinodeMessage>? {
+                    result.success(
+                        mapOf(
+                            "success" to true,
+                            "code" to (message?.ctrl?.code ?: 200),
+                            "reason" to (message?.ctrl?.text ?: "OK"),
+                            "uid" to (client.myId ?: "")
+                        )
+                    )
+                    return null
+                }
+            }
+            val onFailure = object : PromisedReply.FailureListener<TinodeMessage>() {
+                override fun <E : Exception> onFailure(error: E): PromisedReply<TinodeMessage>? {
+                    result.error(
+                        "TINODE_LOGIN_ERROR",
+                        error?.message ?: "Tinode login failed",
+                        null
+                    )
+                    return null
+                }
+            }
+
+            if (client.isConnected) {
+                client.loginBasic(username, password)
+                    .thenApply(onLogin)
+                    .thenCatch(onFailure)
+            } else {
+                client.connect(HOST, TLS, false)
+                    .thenApply(
+                        object : PromisedReply.SuccessListener<TinodeMessage>() {
+                            override fun onSuccess(message: TinodeMessage?): PromisedReply<TinodeMessage> {
+                                return client.loginBasic(username, password)
+                            }
+                        }
+                    )
+                    .thenApply(onLogin)
+                    .thenCatch(onFailure)
+            }
+        } catch (error: Exception) {
+            result.error("TINODE_LOGIN_ERROR", error.message ?: "Tinode login failed", null)
         }
     }
 }

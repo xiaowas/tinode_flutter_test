@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_default_margin"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/activity_default_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageAvatar"
+                android:layout_width="@dimen/avatar_size_huge"
+                android:layout_height="@dimen/avatar_size_huge"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="4sp"
+                android:clickable="true"
+                android:contentDescription="@string/avatar"
+                android:focusable="true"
+                app:strokeColor="@android:color/transparent"
+                app:shapeAppearanceOverlay="@style/roundImageView"
+                app:srcCompat="@drawable/disk" />
+
+            <Button
+                android:id="@+id/uploadAvatar"
+                android:layout_width="48sp"
+                android:layout_height="48sp"
+                android:layout_alignEnd="@id/imageAvatar"
+                android:layout_alignBottom="@id/imageAvatar"
+                android:layout_margin="2sp"
+                android:background="@drawable/pill_counter"
+                android:contentDescription="@string/change_avatar"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                app:drawableTopCompat="@drawable/ic_photo_plus" />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/sectionTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/general" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/topicTitle"
+                style="?android:textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:hint="@string/hint_topic_title"
+                tools:text="Group about travel" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/topicComment"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:hint="@string/placeholder_private"
+                android:maxLines="1"
+                android:minHeight="@dimen/min_touch_height"
+                tools:text="This is a very good group. I like it" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/alias"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_at"
+                android:drawableTint="@color/colorAccent"
+                android:drawablePadding="2dp"
+                android:ellipsize="end"
+                android:hint="@string/alias_plain"
+                android:inputType="text"
+                tools:text="veryGoodAlias" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/topicDescriptionWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/topicDescription"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:hint="@string/description_optional"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="36dp">
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/id" />
+
+            <TextView
+                android:id="@+id/topicAddress"
+                style="?android:textAppearanceMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:textIsSelectable="true"
+                android:typeface="monospace"
+                tools:ignore="TouchTargetSizeCheck"
+                tools:text="grpFv2qrUr6vAd" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonCopyID"
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_copy"
+                android:drawablePadding="4sp"
+                app:drawableStartCompat="@drawable/ic_copy"
+                app:drawableTint="?android:textColorPrimary" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/tagsManagerWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/activity_padding"
+                android:layout_marginBottom="@dimen/activity_padding"
+                android:background="@color/grey" />
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tags_management" />
+
+            <TextView
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/topic_tags_description" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonManageTags"
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/manage"
+                android:drawablePadding="4sp"
+                android:text="@string/manage"
+                android:textColor="?android:textColorPrimary"
+                app:drawableStartCompat="@drawable/ic_edit"
+                app:drawableTint="?android:textColorPrimary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/tagList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:alignContent="flex_start"
+                app:alignItems="flex_start"
+                app:flexWrap="wrap" />
+
+            <TextView
+                android:id="@+id/noTagsFound"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textStyle="italic"
+                android:text="@string/tags_not_found" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+
+</ScrollView>

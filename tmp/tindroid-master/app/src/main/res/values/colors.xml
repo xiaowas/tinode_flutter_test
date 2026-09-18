@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#9E9E9E</color>
+
+    <color name="colorNegativeAction">#FF983220</color>
+    <color name="colorPositiveAction">#FF326F3E</color>
+    <color name="colorNeutralAction">#FF909090</color>
+
+    <color name="colorAccentLight">#E0F2F1</color>
+    <color name="colorAccentLight2">#EDF9FD</color>
+    <color name="colorAccent">#00897B</color>
+    <color name="colorAccentDark">#004D40</color>
+    <color name="colorAccentDark2">#00272C</color>
+    <color name="colorButtonNormal">#D6D7D7</color>
+
+    <color name="colorSwipeChervon">#FFF</color>
+
+    <color name="colorDanger">#B71C1C</color>
+
+    <color name="colorChipBackground">#ECEFF1</color>
+    <color name="colorChipBorder">#90A4AE</color>
+
+    <color name="colorGray">#CCCCCC</color>
+    <color name="colorDarkGray">#757575</color>
+
+    <color name="colorListDivider">#CCCCCC</color>
+
+    <color name="colorPillCounter">#FF98AFC7</color>
+
+    <color name="colorUserOnline">#FF40C040</color>
+    <color name="colorUserOnlineH1">#FF30D030</color>
+    <color name="colorUserOnlineH2">#FF10EE10</color>
+    <color name="colorUserOnlineH3">#FF00FF00</color>
+
+    <color name="colorSplashScreenBackground">#FF3949AB</color>
+
+    <color name="colorNotificationBackground">#3949AB</color>
+
+    <color name="colorOffline">#FFBBBB66</color>
+    <color name="colorOfflineDot">#FF999933</color>
+
+    <color name="colorMessageSelected">#2f3F51B5</color>
+
+    <color name="colorBorderGray">#9E9E9E</color>
+
+    <color name="circularProgressBg">#FFFAFAFA</color>
+    <color name="circularProgressFg">#FF212121</color>
+
+    <!-- Background of message bubbles-->
+    <color name="colorMessageBubbleMine">#FFFAFAFA</color>
+    <color name="colorMessageBubbleMineFlashing">#FCCC</color>
+    <color name="colorMessageBubbleMineFlashingLight">#FEEE</color>
+    <color name="colorMessageBubbleOther">#FFC5E1A5</color>
+    <color name="colorMessageBubbleOtherFlashing">#FF85A165</color>
+    <color name="colorMessageBubbleOtherFlashingLight">#FFA5C185</color>
+
+    <color name="colorReplyBubble">#10333333</color>
+    <color name="colorReplyText">#666666</color>
+
+    <color name="colorImageMetaPanel">#80FFFFFF</color>
+
+    <!-- Audio waveform color -->
+    <color name="waveform">#60333333</color>
+    <color name="waveformPast">#80000000</color>
+
+    <!-- Indicator of user's online/offline status -->
+    <color name="online">#FF40C040</color>
+    <color name="offline">#FFC0C0C0</color>
+
+    <!-- Background color in avatar uploads -->
+    <color name="colorImagePreviewBg">#CCCCCC</color>
+
+    <color name="colorImagePlaceholder">#CCCCCC</color>
+
+    <!-- Background colors for LetterTileDrawables. -->
+    <array name="letter_tile_colors_light">
+        <item>#ef9a9a</item>
+        <item>#90caf9</item>
+        <item>#b0bec5</item>
+        <item>#b39ddb</item>
+        <item>#ffab91</item>
+        <item>#a5d6a7</item>
+        <item>#ddddef</item>
+        <item>#e6ee9c</item>
+        <item>#c5e1a5</item>
+        <item>#fff59d</item>
+        <item>#f48fb1</item>
+        <item>#9fa8da</item>
+        <item>#ffe082</item>
+        <item>#bcaaa4</item>
+        <item>#80deea</item>
+        <item>#ce93d8</item>
+    </array>
+    <color name="letter_tile_text_color_light">#ffffff</color>
+    <color name="letter_tile_bg_color_light">#bbb</color>
+
+    <!-- Darker versions of letter_tile_colors, two shades darker. -->
+    <array name="letter_tile_colors_dark">
+        <item>#C62828</item>
+        <item>#AD1457</item>
+        <item>#6A1B9A</item>
+        <item>#4527A0</item>
+        <item>#283593</item>
+        <item>#1565C0</item>
+        <item>#0277BD</item>
+        <item>#00838F</item>
+        <item>#00695C</item>
+        <item>#2E7D32</item>
+        <item>#558B2F</item>
+        <item>#9E9D24</item>
+        <item>#F9A825</item>
+        <item>#FF8F00</item>
+        <item>#EF6C00</item>
+        <item>#D84315</item>
+    </array>
+    <color name="letter_tile_text_color_dark">#dedede</color>
+    <color name="letter_tile_bg_color_dark">#777</color>
+    <color name="letter_tile_self_bg_color">#eee</color>
+    <color name="launcherBackground">#ffffff</color>
+</resources>

@@ -1,0 +1,64 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.google.com/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.2.1'
+
+        // For FCM push notifications
+        classpath 'com.google.gms:google-services:4.4.4'
+
+        // Crashlytics
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.6'
+
+        // Legal compliance: plugin to collect and display OSS licenses.
+        classpath 'com.google.android.gms:oss-licenses-plugin:0.10.10'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+// This block encapsulates custom properties and makes them available to all
+// modules in the project.
+ext {
+    version_code = gitVersionCode()
+    version_name = gitVersionName()
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.google.com/' }
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
+
+// Use git revision counter as a version code.
+static def gitVersionCode() {
+    // If you are not compiling in a git directory and getting an error like
+    // [A problem occurred evaluating root project 'master'. For input string: ""]
+    // then just return your manually assigned error code like this:
+    //  return 12345
+    def process = "git rev-list --count HEAD".execute()
+    return process.text.toInteger()
+}
+
+// Use current git tag as a version name.
+// For example, if the git tag is 'v0.20.0-rc1' then the version name will be '0.20.0-rc1'.
+static def gitVersionName() {
+    // If you are not compiling in a git directory, you should manually assign version name:
+    //  return "MyVersionName"
+    def process = "git describe --tags".execute()
+    // Remove trailing CR and remove leading 'v' as in 'v1.2.3'
+    return process.text.trim().substring(1)
+}

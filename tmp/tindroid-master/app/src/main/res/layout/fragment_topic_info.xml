@@ -1,0 +1,396 @@
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_default_margin"
+    android:descendantFocusability="afterDescendants"
+    tools:context=".TopicInfoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageAvatar"
+                android:layout_width="@dimen/avatar_size_huge"
+                android:layout_height="@dimen/avatar_size_huge"
+                android:layout_marginStart="4sp"
+                android:layout_marginTop="4sp"
+                android:layout_marginEnd="4sp"
+                android:layout_marginBottom="4sp"
+                android:clickable="true"
+                android:contentDescription="@string/avatar"
+                android:focusable="true"
+                app:strokeColor="@android:color/transparent"
+                app:shapeAppearanceOverlay="@style/roundImageView"
+                app:srcCompat="@drawable/disk" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/topicTitle"
+            style="@style/textPrimaryLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_padding"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textIsSelectable="false"
+            android:drawablePadding="@dimen/activity_padding"
+            app:drawableTint="@color/grey"
+            tools:text="Travel or flowers" />
+
+        <TextView
+            android:id="@+id/topicComment"
+            style="@style/textSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_padding"
+            android:ellipsize="end"
+            android:lines="1"
+            android:singleLine="true"
+            android:textIsSelectable="false"
+            tools:text="Some private notes" />
+
+        <LinearLayout
+            android:id="@+id/topicIdWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:text="@string/id"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/topicAddress"
+                style="@style/textSecondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="monospace"
+                android:lines="1"
+                android:singleLine="true"
+                android:textIsSelectable="true"
+                android:typeface="monospace"
+                android:layout_weight="1"
+                tools:text="grpAbCd345627" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/displayQRCode"
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/display_code"
+                android:drawablePadding="4dp"
+                app:srcCompat="@drawable/ic_qr_code"
+                app:drawableTint="?android:textColorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buttonCopyID"
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_copy"
+                android:drawablePadding="4dp"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_copy"
+                app:drawableTint="?android:textColorPrimary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/aliasIdWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="36dp">
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/alias" />
+
+            <TextView
+                android:id="@+id/alias"
+                style="@style/textSecondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:fontFamily="monospace"
+                android:textIsSelectable="false"
+                android:typeface="monospace"
+                tools:text="\@veryGoodAlias" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buttonCopyAlias"
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/action_copy"
+                android:drawablePadding="4sp"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_copy"
+                app:drawableTint="?android:textColorPrimary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/verified"
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:minHeight="32dp"
+            android:text="@string/badge_verified"
+            android:textIsSelectable="false"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/ic_verified" />
+
+        <TextView
+            android:id="@+id/staff"
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:minHeight="32dp"
+            android:text="@string/badge_staff"
+            android:textIsSelectable="false"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/ic_verified_user" />
+
+        <TextView
+            android:id="@+id/danger"
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:minHeight="32dp"
+            android:text="@string/badge_danger"
+            android:textIsSelectable="false"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/ic_danger" />
+
+        <LinearLayout
+            android:id="@+id/subcntWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="36dp">
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/subscribers_label" />
+
+            <TextView
+                android:id="@+id/subcnt"
+                style="@style/textSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="monospace"
+                android:textIsSelectable="false"
+                android:typeface="monospace"
+                tools:text="1024" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/topicDescriptionWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description" />
+
+            <TextView
+                android:id="@+id/topicDescription"
+                style="@style/textSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_padding"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textIsSelectable="false"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_marginTop="@dimen/activity_padding"
+            android:layout_marginBottom="@dimen/activity_padding"
+            android:background="@color/grey"
+            tools:ignore="SmallSp" />
+
+        <LinearLayout
+            android:id="@+id/switchMutedWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:minHeight="48dp">
+
+            <TextView
+                style="@style/textPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/topic_muted" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchMuted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:minHeight="@dimen/min_touch_height"
+                android:minWidth="@dimen/min_touch_height" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:minHeight="48dp">
+
+            <TextView
+                style="@style/textPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/topic_archived" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchArchived"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:minHeight="@dimen/min_touch_height"
+                android:minWidth="@dimen/min_touch_height" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_marginTop="@dimen/activity_padding"
+            android:layout_marginBottom="@dimen/activity_padding"
+            android:background="@color/grey"
+            tools:ignore="SmallSp" />
+
+        <RelativeLayout
+            android:id="@+id/permissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="?attr/listPreferredItemHeight">
+
+            <ImageView
+                android:id="@+id/icon_security"
+                android:layout_width="@dimen/settings_icon_size"
+                android:layout_height="@dimen/settings_icon_size"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/permissions"
+                android:src="@drawable/ic_key"
+                app:tint="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/security_text"
+                style="?android:textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@id/icon_security"
+                android:text="@string/security" />
+
+            <TextView
+                style="?android:textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/security_text"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@id/icon_security"
+                android:text="@string/group_security_explained" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/groupMembersWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_marginTop="@dimen/activity_padding"
+                android:layout_marginBottom="@dimen/activity_padding"
+                android:background="@color/grey"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                style="@style/sectionTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/group_members" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddMembers"
+                style="?attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/manage_members"
+                android:drawablePadding="4sp"
+                android:text="@string/add_members"
+                android:textColor="?android:textColorPrimary"
+                app:drawableStartCompat="@drawable/ic_person_add"
+                app:drawableTint="?android:textColorPrimary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groupMembers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

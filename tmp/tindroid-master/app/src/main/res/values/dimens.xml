@@ -1,0 +1,34 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">12dp</dimen>
+    <dimen name="activity_vertical_margin">6dp</dimen>
+    <dimen name="button_text">16sp</dimen>
+    <dimen name="spacer_text">18sp</dimen>
+    <dimen name="fab_elevation">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_mini_margin">12dp</dimen>
+    <dimen name="fab_maxi_margin">24dp</dimen>
+    <dimen name="fab_huge">80dp</dimen>
+    <dimen name="fab_large">72dp</dimen>
+    <dimen name="fab_huge_icon">42dp</dimen>
+    <dimen name="fab_large_icon">36dp</dimen>
+    <dimen name="fab_mini_icon">20dp</dimen>
+    <dimen name="activity_padding">6dp</dimen>
+    <dimen name="avatar_size_huge">144dp</dimen>
+    <dimen name="label_h_padding">4dp</dimen>
+    <dimen name="label_margin">1.5dp</dimen>
+    <dimen name="activity_default_margin">16dp</dimen>
+    <dimen name="dialog_padding_left">12dip</dimen>
+    <dimen name="dialog_padding_right">7dip</dimen>
+    <dimen name="cardview_elevation">2dip</dimen>
+    <dimen name="cardview_corner_radius">4dip</dimen>
+    <dimen name="settings_icon_size">24dp</dimen>
+    <dimen name="local_video_frame">144dp</dimen>
+    <dimen name="swipe_to_accept">56dp</dimen>
+    <dimen name="swipe_to_reject">48dp</dimen>
+    <dimen name="pinned_view_corners">8dp</dimen>
+    <dimen name="min_touch_height">48dp</dimen>
+    <dimen name="dialog_padding_vertical">4dp</dimen>
+    <dimen name="fab_low_elevation">2dp</dimen>
+    <dimen name="connecting_dot">2dp</dimen>
+</resources>

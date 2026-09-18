@@ -1,0 +1,167 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MessagesFragment">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/message_view_bkg"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <include layout="@layout/fragment_pinned"
+        android:id="@+id/pinned_messages"
+        android:visibility="gone" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresher"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="4dp"
+        tools:ignore="RtlSymmetry"
+        app:layout_constraintBottom_toTopOf="@id/sendMessageFragment"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pinned_messages">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messages_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:scrollbars="vertical" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/notReadable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/disabled_bkg"
+        android:gravity="center_horizontal|center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/notReadableNote"
+            style="@style/textPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bubble"
+            android:backgroundTint="?android:colorBackground"
+            android:padding="12dp"
+            android:text="@string/messages_not_readable" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sendMessageFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        card_view:cardBackgroundColor="?android:colorBackground"
+        card_view:cardElevation="@dimen/cardview_elevation"
+        card_view:cardUseCompatPadding="true"
+        tools:layout="@layout/fragment_send_message">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:measureAllChildren="false">
+
+            <include layout="@layout/fragment_send_message" />
+
+            <include layout="@layout/fragment_messaging_disabled" />
+
+            <include layout="@layout/fragment_enable_peer" />
+
+            <include layout="@layout/fragment_forward_message" />
+
+            <include layout="@layout/fragment_record_audio" />
+
+            <include layout="@layout/fragment_record_audio_short" />
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/goToLatest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_mini_margin"
+        android:clickable="true"
+        android:contentDescription="@string/button_hint_start_new_chat"
+        android:focusable="true"
+        android:visibility="gone"
+        android:tint="?android:colorPrimaryDark"
+        app:backgroundTint="?android:colorBackgroundFloating"
+        app:borderWidth="0dp"
+        app:elevation="1dp"
+        app:fabSize="mini"
+        app:maxImageSize="@dimen/fab_mini_icon"
+        app:layout_constraintBottom_toTopOf="@id/sendMessageFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_arrow_down" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lockAudioRecording"
+        android:layout_width="44dp"
+        android:layout_height="96dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="-22dp"
+        android:src="@drawable/swipe_to_lock"
+        android:contentDescription="@string/lock_recording_for_long_messages"
+        android:visibility="gone"
+        android:scaleType="fitCenter"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@id/audioRecorder"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/deleteAudioRecording"
+        android:layout_width="96dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="-22dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/swipe_to_delete"
+        android:contentDescription="@string/delete_recording_hint"
+        android:visibility="gone"
+        android:scaleType="fitCenter"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/audioRecorder" />
+
+    <co.tinode.tindroid.widgets.MovableActionButton
+        android:id="@+id/audioRecorder"
+        android:layout_width="@dimen/fab_large"
+        android:layout_height="@dimen/fab_large"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginBottom="-6dp"
+        android:clickable="true"
+        android:contentDescription="@string/button_hint_start_audio"
+        android:elevation="@dimen/fab_elevation"
+        android:focusable="true"
+        android:scaleType="center"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorAccent"
+        app:fabCustomSize="@dimen/fab_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="@dimen/fab_large_icon"
+        app:srcCompat="@drawable/ic_mic"
+        app:tint="?android:textColorPrimaryInverse" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

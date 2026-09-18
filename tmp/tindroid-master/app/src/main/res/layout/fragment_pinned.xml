@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="42dp"
+    android:orientation="horizontal"
+    android:paddingTop="3dp"
+    android:paddingBottom="1dp"
+    android:visibility="visible"
+    android:background="?android:colorBackground"
+    android:elevation="2dp">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/unpinMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        app:srcCompat="@drawable/ic_close"
+        app:tint="?android:textColorPrimary" />
+
+    <ImageView
+        android:id="@+id/staticPin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/pinned_messages"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_pin"
+        app:tint="?android:textColorSecondary" />
+
+    <ImageView
+        android:id="@+id/dotSelector"
+        android:layout_width="16dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_corners_l"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        tools:ignore="ContentDescription" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/previewPager"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_corners_r"
+        tools:ignore="RtlSymmetry" />
+</LinearLayout>

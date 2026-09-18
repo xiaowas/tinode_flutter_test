@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'co.tinode.tinodesdk'
+
+    defaultConfig {
+        minSdkVersion 27
+        compileSdkVersion 36
+        buildConfigField 'int', 'VERSION_CODE', "${rootProject.ext.version_code}"
+        buildConfigField 'String', 'VERSION_NAME', "\"${rootProject.ext.version_name}\""
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/NOTICE', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/NOTICE.txt']
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
+    lint {
+        targetSdk 36
+    }
+    testOptions {
+        targetSdk 36
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.fasterxml.jackson.core:jackson-databind:2.22.0'
+    api 'com.fasterxml.jackson.core:jackson-core:2.22.0'
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.22'
+
+    api 'org.java-websocket:Java-WebSocket:1.5.7'
+    implementation 'com.ibm.icu:icu4j:78.3'
+    implementation 'org.jetbrains:annotations:26.1.0'
+    testImplementation 'junit:junit:4.13.2'
+}

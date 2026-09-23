@@ -1,11 +1,12 @@
 package com.example.tinode_flutter_test
 
-import android.os.Bundle
+import android.content.Intent
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodChannel
 import com.example.tinode_flutter_test.tinode.TinodeBridge
+import com.example.tinode_flutter_test.tinode.MediaBridge
 
 class MainActivity : FlutterActivity() {
 
@@ -14,11 +15,15 @@ class MainActivity : FlutterActivity() {
     }
 
     private lateinit var tinodeBridge: TinodeBridge
+    private lateinit var mediaBridge: MediaBridge
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
         tinodeBridge = TinodeBridge()
+        mediaBridge = MediaBridge(this, tinodeBridge)
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "tinode/media")
+            .setMethodCallHandler { call, result -> mediaBridge.handle(call, result) }
 
         MethodChannel(
             flutterEngine.dartExecutor.binaryMessenger,
@@ -67,6 +72,18 @@ class MainActivity : FlutterActivity() {
                     }
                 }
 
+                "updateGroup" -> {
+                    val topic = call.argument<String>("topic")
+                    if (topic.isNullOrBlank()) result.error("INVALID_ARGUMENT", "Topic is required", null)
+                    else tinodeBridge.updateGroup(topic, call.argument("name"), call.argument("announcement"), call.argument("alias"), result)
+                }
+
+                "leaveGroup" -> {
+                    val topic = call.argument<String>("topic")
+                    if (topic.isNullOrBlank()) result.error("INVALID_ARGUMENT", "Topic is required", null)
+                    else tinodeBridge.leaveGroup(topic, result)
+                }
+
                 "login" -> {
                     val username = call.argument<String>("username")
                     val password = call.argument<String>("password")
@@ -96,5 +113,24 @@ class MainActivity : FlutterActivity() {
             }
         })
     }
-}
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (::mediaBridge.isInitialized && mediaBridge.onActivityResult(requestCode, resultCode, data)) return
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (::mediaBridge.isInitialized && mediaBridge.onPermissionResult(requestCode, grantResults)) return
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onPause() {
+        if (::mediaBridge.isInitialized) mediaBridge.pause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        if (::mediaBridge.isInitialized) mediaBridge.dispose()
+        super.onDestroy()
+    }
+}

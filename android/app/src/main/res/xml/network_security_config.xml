@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- The configured Tinode server currently exposes HTTP uploads. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain>119.29.246.172</domain>
+    </domain-config>
+</network-security-config>

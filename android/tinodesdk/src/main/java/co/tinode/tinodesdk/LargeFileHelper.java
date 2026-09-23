@@ -58,6 +58,8 @@ public class LargeFileHelper {
         ServerMessage msg;
         try {
             conn = (HttpURLConnection) mUrlUpload.openConnection();
+            conn.setConnectTimeout(15000);
+            conn.setReadTimeout(60000);
             conn.setDoOutput(true);
             conn.setUseCaches(false);
             conn.setRequestProperty("Connection", "Keep-Alive");
